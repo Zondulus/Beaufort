@@ -11,16 +11,16 @@ Beaufort is a unified GUI for all of my wind & weather mods built for WindAPI. I
 
 Beaufort's four modes are:
 
-*Default (DEF): a display with simple descriptions of the current wind, strength, vertical component, and turbulence level
+* Default (DEF): a display with simple descriptions of the current wind, strength, vertical component, and turbulence level
 
 
-*Exact (EXC): an exact numerical breakdown of the current total wind
+* Exact (EXC): an exact numerical breakdown of the current total wind
 
 
-*Barb (BRB): a functioning animated meteorological wind barb which symbolically represents the current wind velocity
+* Barb (BRB): a functioning animated meteorological wind barb which symbolically represents the current wind velocity
 
 
-*Control (CTL): a control panel for creating a wind gust with a specified heading, horizontal speed, and vertical speed
+* Control (CTL): a control panel for creating a wind gust with a specified heading, horizontal speed, and vertical speed
 
 
 
