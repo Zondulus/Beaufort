@@ -11,15 +11,15 @@ namespace Beaufort
     // =========================================================================
     public class BeaufortConfig
     {
-        public float lightWind = 5.0f;
+        public float lightWind = 7.5f;
         public float medWind = 15.0f;
         public float highWind = 25.0f;
 
-        public float lightTurbulence = 1.5f;
-        public float heavyTurbulence = 4.0f;
+        public float lightTurbulence = 2.5f;
+        public float heavyTurbulence = 7.5f;
 
-        public float lightLift = 0.5f;
-        public float strongLift = 2.0f;
+        public float lightLift = 4.0f;
+        public float strongLift = 8.0f;
 
         public float barbHalfFeather = 2.5f;
         public float barbFullFeather = 5.0f;
@@ -118,7 +118,6 @@ namespace Beaufort
         {
             telemetryRoutine = StartCoroutine(TelemetryLoop());
             StartCoroutine(RegisterProviderRoutine());
-            // Assuming PNGs are in GameData/Beaufort/UI/
             texStaff = GameDatabase.Instance.GetTexture("Beaufort/UI/staff", false);
             texFlag = GameDatabase.Instance.GetTexture("Beaufort/UI/flag", false);
             texFull = GameDatabase.Instance.GetTexture("Beaufort/UI/feather_full", false);
@@ -306,21 +305,20 @@ namespace Beaufort
             }
         }
 
-        // Total body height (pixels) reserved below the tab buttons.
-        // BRB drives this: GUILayout.Space(180) + ~8px padding = 188. Round up to 190.
+        // Total body height (pixels) reserved below the tab buttons
         private const float BODY_HEIGHT = 190f;
 
         private void DrawWindow(int windowID)
         {
             // --- Tab Navigation ---
             GUILayout.BeginHorizontal();
-            if (GUILayout.Button("DEF")) activeTab = 0;
-            if (GUILayout.Button("EXC")) activeTab = 1;
-            if (GUILayout.Button("BRB")) activeTab = 2;
-            if (GUILayout.Button("CTL")) activeTab = 3;
+            if (GUILayout.Toggle(activeTab == 0, "DEF", GUI.skin.button)) activeTab = 0;
+            if (GUILayout.Toggle(activeTab == 1, "EXC", GUI.skin.button)) activeTab = 1;
+            if (GUILayout.Toggle(activeTab == 2, "BRB", GUI.skin.button)) activeTab = 2;
+            if (GUILayout.Toggle(activeTab == 3, "CTL", GUI.skin.button)) activeTab = 3;
             GUILayout.EndHorizontal();
 
-            // Fixed-height content area keeps window size identical across all tabs.
+            // Fixed-height content area keeps window size identical across all tabs
             GUILayout.BeginVertical(GUILayout.Height(BODY_HEIGHT));
 
             // --- Tab Rendering ---
@@ -390,8 +388,8 @@ namespace Beaufort
             if (Event.current.type == EventType.Repaint)
             {
                 // Compass circle parameters — centred in the window body.
-                // The window body starts just below the tab row (~30px title + ~28px tab buttons).
-                float bodyTop = 58f; // approximate pixels from window top to body content area
+                // The window body starts just below the tab row (~30px title + ~28px tab buttons)
+                float bodyTop = 58f;
                 Vector2 pivot = new Vector2(config.windowRect.width / 2f, bodyTop + BODY_HEIGHT / 2f);
                 float compassRadius = 72f;
 
